@@ -1,0 +1,3 @@
+# durand_kerner
+Durand-Kerner Method in Python with a little something extra that plots algebraic numbers...
+![image](look_at_that.png)
