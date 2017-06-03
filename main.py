@@ -51,10 +51,10 @@ def gen_p(N,L):
         x = np.c_[x,l];
     return x;
 
-l = 20;
+l = 30;
 L = np.arange(-l,l+1);
 
-A = np.zeros((1024,1024));
+A = np.zeros((2048,2048));
 for n in range(1,4):
     for p in gen_p(n,L):
         Z = durand_kerner(np.r_[p,1.0],1000,1e-10);
@@ -64,9 +64,9 @@ for n in range(1,4):
             y = np.imag(z);
             a = int((x+5.0)*(A.shape[1])/10.0)
             b = int((5.0-y)*(A.shape[0])/10.0)
-            for aa in range(-2,+3):
-                for bb in range(-2,+3):
+            for aa in range(-4,+5):
+                for bb in range(-4,+5):
                     if 0 <= a+aa < A.shape[1] and 0 <= b+bb < A.shape[0]:
-                        A[b+bb][a+aa] += np.exp(-0.01*(aa**2+bb**2));
+                        A[b+bb][a+aa] += np.exp(-1.0*(aa**2+bb**2));
 X = np.log(A+1e-4);
 img.imsave("look_at_that.png",X,cmap='jet');
